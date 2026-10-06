@@ -1,0 +1,5 @@
+project_id = "happyish"
+[functions.happyish-publish-insight]
+verify_jwt = false
+[functions.happyish-upload-insight-image]
+verify_jwt = false

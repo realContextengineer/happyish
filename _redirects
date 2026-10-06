@@ -1,0 +1,5 @@
+/api/insights /.netlify/functions/happyish-insights 200
+/insights/archive/ /.netlify/functions/happyish-insights 200
+/insights-sitemap.xml /.netlify/functions/happyish-insights 200
+/insights/:slug/ /.netlify/functions/happyish-insights 200
+/insights/:slug /insights/:slug/ 301

@@ -1,0 +1,9 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+.netlify/
+node_modules/
+.private/
+supabase/.temp/
+dist/
