@@ -125,7 +125,7 @@ Deno.serve(async (request) => {
     status: "published",
     updated_at: currentDate.toISOString(),
     published_at: publishedDate.toISOString(),
-    author_name: text(payload.author_name, 200) || "Karl Croft",
+    author_name: text(payload.author_name, 200) || "HAPPY",
     seo_title: text(payload.seo_title, 300) || title,
     meta_description: text(payload.meta_description, 500) || excerpt,
     cover_image_path: coverImagePath,

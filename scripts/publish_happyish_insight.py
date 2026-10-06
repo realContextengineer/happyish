@@ -9,7 +9,7 @@ def call(url,token,payload):
 
 def main():
  parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('article',type=Path);parser.add_argument('--check',action='store_true',help='Validate locally without uploading or publishing');args=parser.parse_args()
- payload=json.loads(args.article.read_text());required=('slug','title','excerpt','body_markdown','category_slug','cover_image_file','cover_image_alt','sources','tile_colour')
+ payload=json.loads(args.article.read_text());payload.setdefault('author_name','HAPPY');required=('slug','title','excerpt','body_markdown','category_slug','cover_image_file','cover_image_alt','sources','tile_colour')
  missing=[k for k in required if not payload.get(k)]
  if missing:raise ValueError('Missing: '+', '.join(missing))
  import re

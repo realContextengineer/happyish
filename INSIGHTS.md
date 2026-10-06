@@ -19,3 +19,7 @@ Categories: `ai-digital-life`, `neurodiversity`, `getting-unstuck`, `work-skills
 Netlify builds a public-only `dist` directory. Private files, publishing scripts and server source are excluded. Its function serves `/api/insights`, `/insights/:slug/`, `/insights/archive/` and `/insights-sitemap.xml`. Set `HAPPYISH_SITE_URL` to the production HTTPS origin in both Netlify and Supabase when the domain is ready. Netlify's `URL` is used as the article canonical origin until then. Configure the publishing token hash as a Supabase secret. The publishable key can be public; RLS limits its article access to published, nonfuture rows. Private publishing writes use only the protected server functions.
 
 Image generation is separate from publishing. No image-provider integration is configured yet. The helper accepts an image produced by any provider.
+
+## HAPPY profile
+
+HAPPY uses the separate local Hermes profile `happy`, with its publisher at `/Users/aigencyltd/.hermes/profiles/happy/bin/publish_happyish_insight.py`. Its publishing skill is installed. A model/API sign-in, daily schedule and image-provider configuration are not yet configured.
