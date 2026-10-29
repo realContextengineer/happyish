@@ -24,12 +24,35 @@ if (forgetTheme) {
 }
 const menu = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#navigation');
+const navigationSubmenus = [...navigation.querySelectorAll('.nav-submenu')];
+function closeNavigationSubmenus(except = null) {
+  navigationSubmenus.forEach(submenu => {
+    if (submenu !== except) submenu.open = false;
+  });
+}
+navigationSubmenus.forEach(submenu => {
+  submenu.addEventListener('toggle', () => {
+    if (submenu.open) closeNavigationSubmenus(submenu);
+  });
+});
+document.addEventListener('click', event => {
+  navigationSubmenus.forEach(submenu => {
+    if (!submenu.contains(event.target)) submenu.open = false;
+  });
+});
 function setMenu(open) {
   menu.setAttribute('aria-expanded', String(open));
   navigation.classList.toggle('open', open);
+  if (!open) closeNavigationSubmenus();
 }
 menu.addEventListener('click', () => setMenu(menu.getAttribute('aria-expanded') !== 'true'));
 document.addEventListener('keydown', event => {
+  const openSubmenu = navigationSubmenus.find(submenu => submenu.open);
+  if (event.key === 'Escape' && openSubmenu) {
+    openSubmenu.open = false;
+    openSubmenu.querySelector('summary').focus();
+    return;
+  }
   if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') {
     setMenu(false);
     menu.focus();
